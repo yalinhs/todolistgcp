@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://yalinhs_DB:test123@cluster0-xm11j.mongodb.net/todolistDB", {
+mongoose.connect("mongodb+srv://yalinhs_DB:test123@cluster0-xm11j.mongodb.net/todolistgcpDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -151,11 +151,11 @@ app.get("/about", function(req, res) {
   res.render("about");
 });
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
-};
 
-app.listen(port, function() {
-  console.log("Server has started Successfully");
+// Start the server
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`)
+  console.log('Press Ctrl+C to quit.')
 });
+// [END app]
